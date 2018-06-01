@@ -1,0 +1,6 @@
+'.source.Citron':
+  'editor':
+    'increaseIndentPattern': '\\{(\\\\?)[^\\}]*$'
+    'decreaseIndentPattern': '\\s*\\n\\s*\\}'
+    'commentStart': '# '
+    'nonWordCharacters': '/\\(\\)"\':,.;<>~!#^&*|+={}`?-[]'

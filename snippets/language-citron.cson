@@ -1,0 +1,16 @@
+# If you want some example snippets, check out:
+# https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
+
+'.source.citron':
+  'closure-no-params-single':
+    'prefix': '{\\'
+    'body': '{\\\\ $1 '
+  'closure-no-params-multi':
+    'prefix': '{\\\\'
+    'body': '{\\\\\\\n\\\t$1\\\n'
+  'closure-params-single':
+    'prefix': '{:'
+    'body': '{ $1 | $2 '
+  'closure-params-multi':
+    'prefix': '{::'
+    'body': '{ :$1 :$2'

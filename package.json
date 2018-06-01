@@ -1,0 +1,15 @@
+{
+  "name": "language-citron",
+  "version": "0.1.1",
+  "description": "citron language support in Atom",
+  "keywords": [
+    "language",
+    "grammar",
+    "citron"
+  ],
+  "repository": "https://github.com/alimpfard",
+  "license": "BSD",
+  "engines": {
+    "atom": ">=1.0.0"
+  }
+}

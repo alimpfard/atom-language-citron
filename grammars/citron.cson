@@ -1,0 +1,291 @@
+'fileTypes' : [
+  'ctr'
+]
+'name' : 'Citron'
+'comment' : '#'
+'patterns' : [
+  {
+    'include' : '#main'
+  }
+]
+'scopeName' : 'source.Citron'
+'uuid' : ''
+'repository' : {
+  'main' : {
+    'patterns' : [
+      {
+        'begin' : '\\b(var|my|const)\\b'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'variable.Citron'
+        'end' : '([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'variable.Citron'
+          }
+        }
+      }
+      {
+        'match' : '([\\[\\]\\(\\)\\^\\}])'
+        'captures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(?:(\\s*)(\\bis\\b|\\:\\=|\\=\\>)(\\s*))'
+        'captures' : {
+          '1' : {
+            'name' : 'text.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.control.Citron'
+          }
+          '3' : {
+            'name' : 'text.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\?>))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#main__2'
+          }
+        ]
+        'end' : '(<\\?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(0[xX][0-9a-fA-F]+|0[cC][0-7]|\\d+\\.\\d+|\\d+)'
+        'captures' : {
+          '1' : {
+            'name' : 'constant.numeric.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(\')'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#main__3'
+          }
+        ]
+        'end' : '((?!<\\\\)\')'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\\\)((?:\\:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*\\s*)+))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.control.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'text.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\{)((?:\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*))*))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(\\#.*$)'
+        'captures' : {
+          '1' : {
+            'name' : 'comment.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '((?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)\\:)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.function.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(\\\\)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string punctuation.Citron'
+          }
+        }
+        'contentName' : 'keyword.control.Citron'
+        'end' : '(?:([^\\x{003a}]\\w*)|(\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)))'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string punctuation.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.control.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\s+)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#])(\\s+))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.function.Citron'
+          }
+          '3' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'text.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+    ]
+  }
+  'main__1' : {
+    'patterns' : [
+    ]
+  }
+  'main__2' : {
+    'patterns' : [
+      {
+        'match' : '(.)'
+        'captures' : {
+          '1' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+      }
+    ]
+  }
+  'main__3' : {
+    'patterns' : [
+      {
+        'match' : '(\\\\[^xu])'
+        'captures' : {
+          '1' : {
+            'name' : 'string punctuation.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(?:(\\\\[xuXU])([\\x{007b}]?)([0-9a-fA-F]+)([\\x{007d}]?))'
+        'captures' : {
+          '1' : {
+            'name' : 'string punctuation.Citron'
+          }
+          '2' : {
+            'name' : 'string punctuation.Citron'
+          }
+          '3' : {
+            'name' : 'constant.numeric.Citron'
+          }
+          '4' : {
+            'name' : 'string punctuation.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(.)'
+        'captures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+      }
+    ]
+  }
+  'main__4' : {
+    'patterns' : [
+    ]
+  }
+  'main__5' : {
+    'patterns' : [
+    ]
+  }
+  'main__6' : {
+    'patterns' : [
+    ]
+  }
+  'main__7' : {
+    'patterns' : [
+    ]
+  }
+  'main__8' : {
+    'patterns' : [
+    ]
+  }
+  'main__9' : {
+    'patterns' : [
+    ]
+  }
+}
