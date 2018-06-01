@@ -7,7 +7,7 @@
     "grammar",
     "citron"
   ],
-  "repository": "https://github.com/alimpfard",
+  "repository": "https://github.com/alimpfard/atom-language-citron",
   "license": "BSD",
   "engines": {
     "atom": ">=1.0.0"
