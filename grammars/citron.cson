@@ -13,7 +13,7 @@
   'main' : {
     'patterns' : [
       {
-        'begin' : '\\b(var|my|const)\\b'
+        'begin' : '\\b(var|my|const|frozen)\\b'
         'beginCaptures' : {
           '1' : {
             'name' : 'keyword.other.unit.Citron'
@@ -132,6 +132,42 @@
         }
       }
       {
+        'begin' : '(?:(\\#:))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'comment.Citron'
+          }
+        }
+        'contentName' : 'markup.deleted.Citron'
+        'end' : '(?:(?:(declare)(\\s+)(infixr|infixl|lazyev)(\\s*)(.*))|(?:(language)(\\s+)(.*))$)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.Citron'
+          }
+          '3' : {
+            'name' : 'string.regexp.Citron'
+          }
+          '4' : {
+            'name' : 'entity.name.Citron'
+          }
+          '5' : {
+            'name' : 'entity.name.function.Citron'
+          }
+          '6' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '7' : {
+            'name' : 'entity.name.Citron'
+          }
+          '8' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+      }
+      {
         'match' : '(\\#.*$)'
         'name' : 'comment.Citron'
       }
@@ -190,10 +226,37 @@
         }
       }
       {
-        'begin' : '([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)'
+        'begin' : '(?:(\\`)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)(\\1))'
         'beginCaptures' : {
           '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.type.Citron'
+          }
+          '3' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\`?)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)(\\1))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
             'name' : 'text.Citron'
+          }
+          '3' : {
+            'name' : 'constant.character.escape.Citron'
           }
         }
         'contentName' : 'entity.name.Citron'
@@ -207,6 +270,14 @@
     ]
   }
   'main__1' : {
+    'patterns' : [
+    ]
+  }
+  'main__10' : {
+    'patterns' : [
+    ]
+  }
+  'main__11' : {
     'patterns' : [
     ]
   }
