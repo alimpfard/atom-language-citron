@@ -114,7 +114,38 @@
         }
       }
       {
-        'begin' : '(?:(\\{)((?:\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*))*))'
+        'begin' : '(?:(\\{)(asm)(\\s*(?:\\:)\\s*(?:\\w+))*(\\s*intel|att|at\\&t)?(\\s*\\(.*\\)\\s*))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '3' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+          '4' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '5' : {
+            'name' : 'markup.deleted.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#main__5'
+          }
+        ]
+        'end' : '(\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\{)((?:\\s*\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*))*))'
         'beginCaptures' : {
           '1' : {
             'name' : 'entity.name.Citron'
@@ -269,6 +300,14 @@
       }
     ]
   }
+  'asm' : {
+    'patterns' : [
+      {
+        'match' : '(.*)'
+        'name' : 'comment.Citron'
+      }
+    ]
+  }
   'main__1' : {
     'patterns' : [
     ]
@@ -278,6 +317,10 @@
     ]
   }
   'main__11' : {
+    'patterns' : [
+    ]
+  }
+  'main__12' : {
     'patterns' : [
     ]
   }
@@ -324,6 +367,25 @@
   }
   'main__5' : {
     'patterns' : [
+      {
+        'begin' : '(?:\\s*)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : 'source.asm.x86_64'
+          }
+        ]
+        'end' : '(?=\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
     ]
   }
   'main__6' : {
