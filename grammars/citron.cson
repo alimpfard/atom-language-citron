@@ -28,6 +28,28 @@
         }
       }
       {
+        'begin' : '(?:(pure)(\\s*\\{))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#main__2'
+          }
+        ]
+        'end' : '(\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
         'match' : '(\\$[\\x{0021}\\x{002c}\\x{0027}\\x{0060}](?!=\\s))'
         'name' : 'constant.character.escape.Citron'
       }
@@ -62,7 +84,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__2'
+            'include' : '#main__3'
           }
         ]
         'end' : '(<\\?)'
@@ -85,7 +107,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__3'
+            'include' : '#main__4'
           }
         ]
         'end' : '((?!<\\\\)\')'
@@ -114,7 +136,7 @@
         }
       }
       {
-        'begin' : '(?:(\\{)(asm)(\\s*(?:\\:)\\s*(?:\\w+))*(\\s*intel|att|at\\&t)?(\\s*\\(.*\\)\\s*))'
+        'begin' : '(?:(\\{)(asm)(\\s*(?:\\:)\\s*(?:\\w+))*(\\s*(?:intel|att|at\\&t))?(\\s*\\(.*\\)\\s*))'
         'beginCaptures' : {
           '1' : {
             'name' : 'entity.name.Citron'
@@ -134,7 +156,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__5'
+            'include' : '#main__6'
           }
         ]
         'end' : '(\\})'
@@ -324,7 +346,19 @@
     'patterns' : [
     ]
   }
+  'main__13' : {
+    'patterns' : [
+    ]
+  }
   'main__2' : {
+    'patterns' : [
+      {
+        'match' : '(.)'
+        'name' : 'text.Citron'
+      }
+    ]
+  }
+  'main__3' : {
     'patterns' : [
       {
         'match' : '(.)'
@@ -332,7 +366,7 @@
       }
     ]
   }
-  'main__3' : {
+  'main__4' : {
     'patterns' : [
       {
         'match' : '(\\\\[^xu])'
@@ -361,11 +395,11 @@
       }
     ]
   }
-  'main__4' : {
+  'main__5' : {
     'patterns' : [
     ]
   }
-  'main__5' : {
+  'main__6' : {
     'patterns' : [
       {
         'begin' : '(?:\\s*)'
@@ -386,10 +420,6 @@
           }
         }
       }
-    ]
-  }
-  'main__6' : {
-    'patterns' : [
     ]
   }
   'main__7' : {
