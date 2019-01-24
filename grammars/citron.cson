@@ -95,7 +95,7 @@
         }
       }
       {
-        'match' : '(0[xX][0-9a-fA-F]+|0[cC][0-7]|\\d+\\.\\d+|\\d+)'
+        'match' : '(0[xX][0-9a-fA-F]+|0[cC][0-7]+|0[bB][01]+|\\d+\\.\\d+|\\d+)'
         'name' : 'constant.numeric.Citron'
       }
       {
@@ -410,7 +410,7 @@
         }
         'patterns' : [
           {
-            'include' : 'source.asm.x86_64'
+            'include' : '#asm'
           }
         ]
         'end' : '(?=\\})'
