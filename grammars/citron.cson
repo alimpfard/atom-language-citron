@@ -107,7 +107,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__4'
+            'include' : '#string'
           }
         ]
         'end' : '((?!<\\\\)\')'
@@ -156,7 +156,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__6'
+            'include' : '#main__5'
           }
         ]
         'end' : '(\\})'
@@ -330,27 +330,335 @@
       }
     ]
   }
-  'main__1' : {
+  'expr_interpolation' : {
+    'patterns' : [
+      {
+        'begin' : '\\b(var|my|const|frozen)\\b'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'variable.Citron'
+        'end' : '([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'variable.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(pure)(\\s*\\{))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#expr_interpolation__2'
+          }
+        ]
+        'end' : '(\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(\\$[\\x{0021}\\x{002c}\\x{0027}\\x{0060}](?!=\\s))'
+        'name' : 'constant.character.escape.Citron'
+      }
+      {
+        'match' : '(\\$(?=\\())'
+        'name' : 'constant.character.escape.Citron'
+      }
+      {
+        'match' : '([\\[\\]\\(\\)\\^\\}])'
+        'name' : 'entity.name.Citron'
+      }
+      {
+        'match' : '(?:(\\s*)(\\bis\\b|\\:\\=|\\=\\>)(\\s*))'
+        'captures' : {
+          '1' : {
+            'name' : 'text.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.control.Citron'
+          }
+          '3' : {
+            'name' : 'text.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\?>))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#expr_interpolation__3'
+          }
+        ]
+        'end' : '(<\\?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(0[xX][0-9a-fA-F]+|0[cC][0-7]+|0[bB][01]+|\\d+\\.\\d+|\\d+)'
+        'name' : 'constant.numeric.Citron'
+      }
+      {
+        'begin' : '(\')'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#string'
+          }
+        ]
+        'end' : '((?!<\\\\)\')'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\\\)((?:\\:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*\\s*)+))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'keyword.control.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'text.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\{)(asm)(\\s*(?:\\:)\\s*(?:\\w+))*(\\s*(?:intel|att|at\\&t))?(\\s*\\(.*\\)\\s*))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '3' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+          '4' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '5' : {
+            'name' : 'markup.deleted.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#expr_interpolation__5'
+          }
+        ]
+        'end' : '(\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\{)((?:\\s*\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*))*))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\#:))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'comment.Citron'
+          }
+        }
+        'contentName' : 'markup.deleted.Citron'
+        'end' : '(?:(?:(declare)(\\s+)(infixr|infixl|lazyev)(\\s*)(.*))|(?:(language)(\\s+)(.*))$)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.Citron'
+          }
+          '3' : {
+            'name' : 'string.regexp.Citron'
+          }
+          '4' : {
+            'name' : 'entity.name.Citron'
+          }
+          '5' : {
+            'name' : 'entity.name.function.Citron'
+          }
+          '6' : {
+            'name' : 'markup.deleted.Citron'
+          }
+          '7' : {
+            'name' : 'entity.name.Citron'
+          }
+          '8' : {
+            'name' : 'string.regexp.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(\\#.*$)'
+        'name' : 'comment.Citron'
+      }
+      {
+        'begin' : '((?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)\\:)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.function.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(\\\\)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+        'contentName' : 'keyword.control.Citron'
+        'end' : '(?:([^\\x{003a}]\\w*)|(\\:(?:[^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)))'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'keyword.control.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\s+)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]|[-\\x{002b}\\x{002a}\\x{0026}\\x{0025}\\x{0024}\\x{0040}\\x{0021}\\x{003d}\\x{0022}\\x{003b}\\x{002f}\\x{005c}\\x{003c}\\x{003e}\\x{003f}\\x{007e}]+)(\\s+))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.function.Citron'
+          }
+          '3' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\`)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)(\\1))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.type.Citron'
+          }
+          '3' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(?:(\\`?)([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)(\\1))'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'text.Citron'
+          }
+          '3' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*?)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+    ]
+  }
+  'expr_interpolation__1' : {
     'patterns' : [
     ]
   }
-  'main__10' : {
+  'expr_interpolation__10' : {
     'patterns' : [
     ]
   }
-  'main__11' : {
+  'expr_interpolation__11' : {
     'patterns' : [
     ]
   }
-  'main__12' : {
+  'expr_interpolation__12' : {
     'patterns' : [
     ]
   }
-  'main__13' : {
-    'patterns' : [
-    ]
-  }
-  'main__2' : {
+  'expr_interpolation__2' : {
     'patterns' : [
       {
         'match' : '(.)'
@@ -358,7 +666,7 @@
       }
     ]
   }
-  'main__3' : {
+  'expr_interpolation__3' : {
     'patterns' : [
       {
         'match' : '(.)'
@@ -366,40 +674,11 @@
       }
     ]
   }
-  'main__4' : {
-    'patterns' : [
-      {
-        'match' : '(\\\\[^xu])'
-        'name' : 'constant.character.escape.Citron'
-      }
-      {
-        'match' : '(?:(\\\\[xuXU])([\\x{007b}]?)([0-9a-fA-F]+)([\\x{007d}]?))'
-        'captures' : {
-          '1' : {
-            'name' : 'constant.character.escape.Citron'
-          }
-          '2' : {
-            'name' : 'constant.character.escape.Citron'
-          }
-          '3' : {
-            'name' : 'constant.numeric.Citron'
-          }
-          '4' : {
-            'name' : 'constant.character.escape.Citron'
-          }
-        }
-      }
-      {
-        'match' : '(.)'
-        'name' : 'string.Citron'
-      }
-    ]
-  }
-  'main__5' : {
+  'expr_interpolation__4' : {
     'patterns' : [
     ]
   }
-  'main__6' : {
+  'expr_interpolation__5' : {
     'patterns' : [
       {
         'begin' : '(?:\\s*)'
@@ -422,6 +701,85 @@
       }
     ]
   }
+  'expr_interpolation__6' : {
+    'patterns' : [
+    ]
+  }
+  'expr_interpolation__7' : {
+    'patterns' : [
+    ]
+  }
+  'expr_interpolation__8' : {
+    'patterns' : [
+    ]
+  }
+  'expr_interpolation__9' : {
+    'patterns' : [
+    ]
+  }
+  'main__1' : {
+    'patterns' : [
+    ]
+  }
+  'main__10' : {
+    'patterns' : [
+    ]
+  }
+  'main__11' : {
+    'patterns' : [
+    ]
+  }
+  'main__12' : {
+    'patterns' : [
+    ]
+  }
+  'main__2' : {
+    'patterns' : [
+      {
+        'match' : '(.)'
+        'name' : 'text.Citron'
+      }
+    ]
+  }
+  'main__3' : {
+    'patterns' : [
+      {
+        'match' : '(.)'
+        'name' : 'string.regexp.Citron'
+      }
+    ]
+  }
+  'main__4' : {
+    'patterns' : [
+    ]
+  }
+  'main__5' : {
+    'patterns' : [
+      {
+        'begin' : '(?:\\s*)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#asm'
+          }
+        ]
+        'end' : '(?=\\})'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+    ]
+  }
+  'main__6' : {
+    'patterns' : [
+    ]
+  }
   'main__7' : {
     'patterns' : [
     ]
@@ -432,6 +790,65 @@
   }
   'main__9' : {
     'patterns' : [
+    ]
+  }
+  'string' : {
+    'patterns' : [
+      {
+        'match' : '(?:(\\$\\$)(\\w+)\\b)'
+        'captures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.function.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(\\\\[^xu])'
+        'name' : 'constant.character.escape.Citron'
+      }
+      {
+        'match' : '(?:(\\\\[xuXU])([\\x{007b}]?)([0-9a-fA-F]+)([\\x{007d}]?))'
+        'captures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '3' : {
+            'name' : 'constant.numeric.Citron'
+          }
+          '4' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+      }
+      {
+        'begin' : '(\\$\\{\\{)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#expr_interpolation'
+          }
+        ]
+        'end' : '(\\}\\}\\$)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+        }
+      }
+      {
+        'match' : '(.)'
+        'name' : 'string.Citron'
+      }
     ]
   }
 }
