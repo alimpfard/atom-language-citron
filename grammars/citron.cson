@@ -13,6 +13,21 @@
   'main' : {
     'patterns' : [
       {
+        'begin' : '(?:(@comptime)\\b)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'markup.deleted.Citron'
+          }
+        }
+        'contentName' : 'entity.name.Citron'
+        'end' : '(\\s*)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'entity.name.Citron'
+          }
+        }
+      }
+      {
         'begin' : '\\b(var|my|const|frozen)\\b'
         'beginCaptures' : {
           '1' : {
@@ -20,9 +35,12 @@
           }
         }
         'contentName' : 'variable.Citron'
-        'end' : '([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)'
+        'end' : '(?:(&&|&)?([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*))'
         'endCaptures' : {
           '1' : {
+            'name' : 'constant.character.escape.Citron'
+          }
+          '2' : {
             'name' : 'variable.Citron'
           }
         }
@@ -39,7 +57,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__2'
+            'include' : '#main__3'
           }
         ]
         'end' : '(\\})'
@@ -84,7 +102,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__3'
+            'include' : '#main__4'
           }
         ]
         'end' : '(<\\?)'
@@ -156,7 +174,7 @@
         }
         'patterns' : [
           {
-            'include' : '#main__5'
+            'include' : '#main__6'
           }
         ]
         'end' : '(\\})'
@@ -733,7 +751,15 @@
     'patterns' : [
     ]
   }
+  'main__13' : {
+    'patterns' : [
+    ]
+  }
   'main__2' : {
+    'patterns' : [
+    ]
+  }
+  'main__3' : {
     'patterns' : [
       {
         'match' : '(.)'
@@ -741,7 +767,7 @@
       }
     ]
   }
-  'main__3' : {
+  'main__4' : {
     'patterns' : [
       {
         'match' : '(.)'
@@ -749,11 +775,11 @@
       }
     ]
   }
-  'main__4' : {
+  'main__5' : {
     'patterns' : [
     ]
   }
-  'main__5' : {
+  'main__6' : {
     'patterns' : [
       {
         'begin' : '(?:\\s*)'
@@ -774,10 +800,6 @@
           }
         }
       }
-    ]
-  }
-  'main__6' : {
-    'patterns' : [
     ]
   }
   'main__7' : {
