@@ -13,6 +13,26 @@
   'main' : {
     'patterns' : [
       {
+        'match' : '(?:([^\\s\\d\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#][^\\s\\x{003a}.\\x{002c}\\[\\]\\(\\)\\{\\}\\#]*)(\\s+)(‹)([^\\x{203a}]*?)(›))'
+        'captures' : {
+          '1' : {
+            'name' : 'keyword.other.unit.Citron'
+          }
+          '2' : {
+            'name' : 'entity.name.Citron'
+          }
+          '3' : {
+            'name' : 'string.Citron'
+          }
+          '4' : {
+            'name' : 'string.regexp.Citron'
+          }
+          '5' : {
+            'name' : 'string.Citron'
+          }
+        }
+      }
+      {
         'begin' : '(?:(@comptime)\\b)'
         'beginCaptures' : {
           '1' : {
@@ -115,6 +135,25 @@
       {
         'match' : '(0[xX][0-9a-fA-F]+|0[cC][0-7]+|0[bB][01]+|\\d+\\.\\d+|\\d+)'
         'name' : 'constant.numeric.Citron'
+      }
+      {
+        'begin' : '(‹)'
+        'beginCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
+        'patterns' : [
+          {
+            'include' : '#fstring'
+          }
+        ]
+        'end' : '(›)'
+        'endCaptures' : {
+          '1' : {
+            'name' : 'string.Citron'
+          }
+        }
       }
       {
         'begin' : '(\')'
@@ -733,6 +772,14 @@
   }
   'expr_interpolation__9' : {
     'patterns' : [
+    ]
+  }
+  'fstring' : {
+    'patterns' : [
+      {
+        'match' : '(.)'
+        'name' : 'string.Citron'
+      }
     ]
   }
   'main__1' : {
